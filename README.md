@@ -1,0 +1,26 @@
+Av1_3T_BE_BibliotecaJS
+
+Este repositório contém um exemplo de integração entre HTML, CSS e JavaScript.
+
+## Estrutura do Projeto
+
+- **index.html**: Estrutura da página.
+- **style.css**: Estilo da página.
+- **script.js**: Funções em JavaScript.
+
+## Funcionalidades
+
+- Um **botão** que executa uma função JavaScript ao ser clicado.
+- Um **formulário** que captura o texto digitado e exibe um alerta.
+
+## Como Usar
+
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/seu-usuario/Av1_3T_BE_BibliotecaJS.git
+    ```
+2. Abra o arquivo `index.html` no seu navegador.
+
+## Licença
+
+Uso educacional.
