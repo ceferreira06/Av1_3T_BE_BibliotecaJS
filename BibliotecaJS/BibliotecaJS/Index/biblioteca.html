@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>📚 Biblioteca Virtual</h1>
+
+      <!-- Formulário de cadastro -->
+      <section>
+        <h2>Cadastrar Livro</h2>
+        <input type="text" id="titulo" placeholder="Título">
+        <input type="text" id="autor" placeholder="Autor">
+        <input type="number" id="ano" placeholder="Ano">
+        <input type="number" id="quantidade" placeholder="Quantidade">
+        <button onclick="cadastrarLivro()">Cadastrar</button>
+      </section>
+
+      <!-- Botões de operações -->
+      <section>
+        <h2>Operações</h2>
+        <button onclick="listarLivros()">📋 Listar Livros</button>
+        <button onclick="totalLivros()">🔢 Total de Livros</button>
+        <button onclick="gerarRelatorio()">📑 Gerar Relatório</button>
+      </section>
+
+      <!-- Excluir -->
+      <section>
+        <h2>Excluir Livro</h2>
+        <input type="text" id="tituloExcluir" placeholder="Título do livro">
+        <button onclick="excluirLivro()">❌ Excluir</button>
+      </section>
+
+      <!-- Resultado -->
+      <section>
+        <h2>Resultado</h2>
+        <pre id="saida"></pre>
+      </section>
+    </div>
+
+    <!-- Scripts JS -->
+    <script type="module" src="funcoes/armazenamento.js"></script>
+    <script type="module" src="funcoes/cadastrarLivros.js"></script>
+    <script type="module" src="funcoes/listarLivros.js"></script>
+    <script type="module" src="funcoes/calcularTotal.js"></script>
+    <script type="module" src="funcoes/gerarRelatorio.js"></script>
+    <script type="module" src="funcoes/excluirLivros.js"></script>
+
+    <script>
+      // Funções que chamam as funções JS e manipulam o DOM
+
+      function cadastrarLivro() {
+        const titulo = document.getElementById('titulo').value;
+        const autor = document.getElementById('autor').value;
+        const ano = document.getElementById('ano').value;
+        const quantidade = document.getElementById('quantidade').value;
+
+        if (!titulo || !autor || !ano || !quantidade) {
+          alert("Todos os campos devem ser preenchidos!");
+          return;
+        }
+
+        // Aqui chamamos a função do JS para cadastrar o livro
+        cadastrar(titulo, autor, ano, quantidade);
+      }
+
+      function listarLivros() {
+        const resultado = listar();  // Chama a função listar do JS
+        mostrarResultado(resultado);
+      }
+
+      function totalLivros() {
+        const resultado = calcularTotal();  // Chama a função calcularTotal do JS
+        mostrarResultado(resultado);
+      }
+
+      function gerarRelatorio() {
+        const resultado = gerarRelatorio();  // Chama a função gerarRelatorio do JS
+        mostrarResultado(resultado);
+      }
+
+      function excluirLivro() {
+        const tituloExcluir = document.getElementById('tituloExcluir').value;
+        const resultado = excluir(tituloExcluir);  // Chama a função excluir do JS
+        if (resultado) {
+          mostrarResultado(`Livro "${tituloExcluir}" excluído com sucesso!`);
+        } else {
+          mostrarResultado(`Livro "${tituloExcluir}" não encontrado.`);
+        }
+      }
+
+      function mostrarResultado(texto) {
+        document.getElementById("saida").textContent = texto;
+      }
+    </script>
+  </body>
+</html>
